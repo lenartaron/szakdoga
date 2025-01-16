@@ -9,3 +9,28 @@
   background-attachment: fixed;
   background-size: cover;
 }
+
+body {
+  margin: 0%;
+}
+
+header, input, button, a, footer, h2 {
+  color: #DFD1EB !important;
+}
+
+header {
+  background-color: #44165A;
+  filter: drop-shadow(0, 4, 4, black);
+  padding: 10px !important;
+}
+
+button, footer {
+  background-color: #5E3674;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
