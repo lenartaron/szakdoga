@@ -1,5 +1,5 @@
 <script setup>
-
+import HelloWorld from './components/HelloWorld.vue';
 </script>
 <template>
   <header>
@@ -7,7 +7,7 @@
     <a href="http://localhost:5173/">link</a>
   </header>
   <main>
-
+    <HelloWorld />
   </main>
   <footer>
     <p>Copyright &copy;</p>
