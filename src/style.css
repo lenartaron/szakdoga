@@ -4,21 +4,29 @@
   font-weight: 400;
 
   cursor: url("assets/simplecursor.cur"), pointer;
-}
-
-main {
   background-image: url("/src/assets/bck.webp");
   background-repeat: no-repeat; 
   background-attachment: fixed;
   background-size: cover;
 }
 
+/*Body*/
 body {
-  margin: 0%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
+/*Header*/
 header, input, button, a, footer, h2 {
   color: #DFD1EB !important;
+}
+
+header, footer {
+  background-color: #44165A;
 }
 
 header {
@@ -27,13 +35,24 @@ header {
   padding: 10px !important;
 }
 
-button, footer {
+header>a {
+  font-weight: 700;
+  font-size: xx-large;
+  text-decoration: none;
+  color: aliceblue;
+  cursor: url("assets/cursortest.cur"), pointer;
+}
+
+button {
   background-color: #5E3674;
 }
 
+/*Footer*/
 footer {
   position: fixed;
   bottom: 0;
   width: 100%;
   text-align: center;
+  padding: 10px 0;
 }
+
