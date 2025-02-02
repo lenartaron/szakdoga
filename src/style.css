@@ -5,19 +5,19 @@
 
   cursor: url("assets/simplecursor.cur"), pointer;
   background-image: url("/src/assets/bck.webp");
+}
+
+/*Body*/
+:root, body {
   background-repeat: no-repeat; 
   background-attachment: fixed;
   background-size: cover;
 }
 
-/*Body*/
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
 /*Header*/
@@ -30,7 +30,6 @@ header, footer {
 }
 
 header {
-  background-color: #44165A;
   filter: drop-shadow(0, 4, 4, black);
   padding: 10px !important;
 }
@@ -43,16 +42,21 @@ header>a {
   cursor: url("assets/cursortest.cur"), pointer;
 }
 
-button {
-  background-color: #5E3674;
-}
-
 /*Footer*/
 footer {
-  position: fixed;
   bottom: 0;
   width: 100%;
   text-align: center;
   padding: 10px 0;
 }
+
+/*Egyéb*/
+button {
+  background-color: #5E3674;
+}
+
+#reszletek {
+  cursor: url("assets/pointercursor.cur"), auto;
+}
+
 
