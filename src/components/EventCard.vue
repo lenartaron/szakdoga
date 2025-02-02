@@ -82,6 +82,4 @@ main {
   font-size: 1rem;
   margin-top: 5px;
 }
-
-
 </style>
