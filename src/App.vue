@@ -5,7 +5,7 @@ import EventCard from "./components/EventCard.vue";
 <template>
   <div class="page-wrapper">
     <header>
-      <h1>teszt</h1>
+      <img src="/src/assets/logo.png" class="logo">
     </header>
       <EventCard />
     <footer>

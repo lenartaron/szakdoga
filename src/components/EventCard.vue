@@ -35,21 +35,30 @@
 
 .card {
   background-color: rgba(0, 0, 0, 0.7);
-  color: white;
   border-radius: 10px;
   padding: 20px;
   margin: 20px 0;
-  width: 80%;
+  width: 20%;
   height: auto;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
   align-items: flex-start;
-  transition: width 2s, background-color 2s, color 2s;
+  transition: width 1s, background-color 1s, color 1s;
+}
+
+.card, #reszletek {
+  color: white;
 }
 
 .card:hover {
   width: 83%;
   background-color: #fff;
   color: #000;
+}
+
+.card:hover #reszletek {
+  background-color: #5e367400;
+  color: rgb(0, 0, 0); 
+  border-color: #5E3674;
 }
 
 .card img {
@@ -77,17 +86,16 @@
   background-color: rgba(0, 0, 0, 0);
   justify-self: center;
   position: relative;
-  padding: 1rem 2rem;
+  padding: 10px 20px;
   font-size: 1rem;
   font-weight: 600;
-  color: white;
   background: none;
-  border: 2px solid #646cff;
+  border: 2px solid #5E3674;
   border-radius: 8px;
   cursor: pointer;
   overflow: hidden;
   transition: all 0.3s ease;
-  background: linear-gradient(#646cff 0 0) no-repeat calc(200% - var(--p, 0%))
+  background: linear-gradient(#451f5a 0 0) no-repeat calc(200% - var(--p, 0%))
     100% / 200% var(--p, 0.2em);
   transition: 0.3s var(--t, 0s),
   background-position 0.3s calc(0.3s - var(--t, 0s));
@@ -96,6 +104,8 @@
 #reszletek:hover {
   --p: 100%;
   --t: 0.3s;
-  color: #fff;
+  color: #000000;
 }
+
+
 </style>

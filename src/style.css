@@ -59,4 +59,7 @@ button {
   cursor: url("assets/pointercursor.cur"), auto;
 }
 
+.logo {
+  width: 7%;
+}
 
