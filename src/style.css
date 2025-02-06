@@ -4,11 +4,12 @@
   font-weight: 400;
 
   cursor: url("assets/simplecursor.cur"), pointer;
-  background-image: url("/src/assets/bck.webp");
+  
 }
 
 /*Body*/
-:root, body {
+body {
+  background-image: url("/src/assets/bck.webp");
   background-repeat: no-repeat; 
   background-attachment: fixed;
   background-size: cover;
@@ -47,6 +48,7 @@ footer {
   bottom: 0;
   width: 100%;
   text-align: center;
+  align-items: end;
   padding: 10px 0;
 }
 
