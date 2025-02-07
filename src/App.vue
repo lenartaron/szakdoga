@@ -1,10 +1,28 @@
 <script setup>
+import { ref, onMounted, onUnmounted  } from 'vue';
+
+const isMobil = ref(false);
+
+const updateWindowWidth = () => {
+  isMobile.value = window.innerWidth < 768;
+};
+
+onMounted(() => {
+  updateWindowWidth();
+  window.addEventListener('resize', updateWindowWidth); 
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateWindowWidth);
+});
+
+
 
 </script>
 <template>
     <header>
       <h1>teszt</h1>
-      <section>
+      <section v-if="!isMobil">
         <nav>
           <ul class="menuItems">
             <li><a href="#" data-item='Home'>Home</a></li>
@@ -64,6 +82,15 @@
   transition: all 0.5s ease-in-out;
 }
 
+@media (min-width: 769px) {
+  .card {
+    width: 25%;
+  }
+}
 
-
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+}
 </style>
