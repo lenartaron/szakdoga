@@ -84,9 +84,9 @@
   --t: 0.3s;
 }
 
-#reszletek:hover>span {
-  color: #000;
-}
+/*#reszletek:hover>span {
+  color: white;
+}*/
 
 .card:hover {
   width: 28%;

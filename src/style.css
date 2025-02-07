@@ -32,7 +32,7 @@ header, footer {
 
 header {
   filter: drop-shadow(0, 4, 4, black);
-  padding: 10px !important;
+  padding: 1px !important;
 }
 
 header>a {
