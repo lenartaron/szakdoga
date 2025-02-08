@@ -11,7 +11,7 @@
           <h3>Card Title {{ index }}</h3>
           <p>This is a description for the first card.</p>
         </div>
-        <button @click="EventDetail(index)" id="reszletek"><span>Szia</span></button>
+        <button @click="EventDetail(index)" id="reszletek"><span>Részletek</span></button>
       </div>
     </div>
   </main>
@@ -75,8 +75,14 @@
     background-position 0.3s calc(0.3s - var(--t, 0s));
   color: #000;
 }
-#reszletek>span {
-  color: #a88db8;
+
+span {
+  transition: color 1s;
+  color: var(--c,#a88db8);
+}
+
+.card:hover>#reszletek:hover>span {
+  --c: #cdbdd6;
 }
 
 #reszletek:hover {
@@ -84,9 +90,9 @@
   --t: 0.3s;
 }
 
-/*#reszletek:hover>span {
-  color: white;
-}*/
+.card:hover>#reszletek>span {
+  --c: black;
+}
 
 .card:hover {
   width: 28%;

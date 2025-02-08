@@ -1,28 +1,10 @@
 <script setup>
-import { ref, onMounted, onUnmounted  } from 'vue';
-
-const isMobil = ref(false);
-
-const updateWindowWidth = () => {
-  isMobile.value = window.innerWidth < 768;
-};
-
-onMounted(() => {
-  updateWindowWidth();
-  window.addEventListener('resize', updateWindowWidth); 
-});
-
-onUnmounted(() => {
-  window.removeEventListener('resize', updateWindowWidth);
-});
-
-
 
 </script>
 <template>
     <header>
       <h1>teszt</h1>
-      <section v-if="!isMobil">
+      <section>
         <nav>
           <ul class="menuItems">
             <li><a href="#" data-item='Home'>Home</a></li>
