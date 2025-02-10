@@ -15,7 +15,7 @@
         </nav>
       </section>
     </header>
-    <main>
+    <main class="contant">
       <router-view />
     </main>
     <footer>
@@ -23,7 +23,6 @@
     </footer>
 </template>
 <style scoped>
-
 .menuItems {
   list-style: none;
   display: flex;
