@@ -1,5 +1,6 @@
 <script setup>
 
+
 </script>
 <template>
     <header>
@@ -13,6 +14,10 @@
             <li><a href="#" data-item='Contact'>Contact</a></li>
           </ul>
         </nav>
+      </section>
+      <section>
+        <button>Bejelentkezés</button>
+        <button>Regisztráció</button>
       </section>
     </header>
     <main class="contant">
@@ -72,6 +77,9 @@
 @media (max-width: 768px) {
   .card {
     width: 100%;
+  }
+  .menuItems {
+    display: none;
   }
 }
 </style>

@@ -57,7 +57,7 @@ header {
 header>a {
   font-weight: 700;
   font-size: xx-large;
-  text-decoration: none;
+  box-decoration: none;
   color: aliceblue;
   cursor: url("assets/cursortest.cur"), pointer;
 }
@@ -66,7 +66,7 @@ header>a {
 footer {
   bottom: 0;
   width: 100%;
-  text-align: center;
+  box-align: center;
   align-items: end;
   padding: 10px 0;
 }
@@ -97,7 +97,34 @@ footer {
 /*Egyéb*/
 button {
   background-color: #5E3674;
+  margin: 2px;
+  border: solid 1px rgb(66, 33, 165);
+  border-radius: 5px;
+  transition: all 1s;
 }
+
+button:hover {
+  animation: ButHov 0.4s ease infinite;
+}
+
+@keyframes ButHov {
+  0%{
+    box-shadow: -2px -2px 1px rgb(36, 19, 85), 3px 3px 10px rgb(33, 86, 165);
+  }
+  25% {
+    box-shadow: -2px 2px 1px rgb(36, 19, 85), 3px -3px 10px rgb(66, 33, 165);
+  }
+  50% {
+    box-shadow: 2px 2px 1px rgb(36, 19, 85), -3px -3px 10px rgb(66, 33, 165);
+  }
+  75% {
+    box-shadow: 2px -2px 1px rgb(36, 19, 85), -3px 3px 10px rgb(66, 33, 165);
+  }
+  100% {
+    box-shadow: -2px -2px 1px rgb(36, 19, 85), 3px 3px 10px rgb(66, 33, 165);
+  }
+}
+
 
 #reszletek {
   cursor: url("assets/pointercursor.cur"), auto;
