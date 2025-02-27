@@ -23,7 +23,7 @@
     <main class="contant">
       <router-view />
     </main>
-    <footer>
+    <footer class="text-center">
       <p>Copyright &copy;</p>
     </footer>
 </template>
