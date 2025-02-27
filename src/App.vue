@@ -4,7 +4,14 @@
 </script>
 <template>
     <header>
-      <h1>teszt</h1>
+        <div class="row">
+          <img src="./assets/logo.png" class="col-lg-1 col-md-6 col-sm-12">
+          <h1>GatherinGalaxy</h1>
+          <div class="row justify-content-center">
+            <button class="col-lg-1">Bejelentkezés</button>
+            <button class="col-lg-1">Regisztráció</button>
+          </div>
+        </div>
       <section>
         <nav>
           <ul class="menuItems">
@@ -14,10 +21,6 @@
             <li><a href="#" data-item='Contact'>Contact</a></li>
           </ul>
         </nav>
-      </section>
-      <section>
-        <button>Bejelentkezés</button>
-        <button>Regisztráció</button>
       </section>
     </header>
     <main class="contant">
@@ -82,4 +85,5 @@
     display: none;
   }
 }
+
 </style>

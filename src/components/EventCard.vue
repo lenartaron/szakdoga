@@ -4,7 +4,7 @@
 <template>
   <main>
     <div class="container">
-      <div class="row justify-content-center">
+      <div class="row justify-center">
         <div class="col-lg-4 col-md-6 col-sm-12" v-for="index in 20" :key="index">
           <div class="card">
             <img src="../assets/testProfilIcon.png" alt="Profile">
