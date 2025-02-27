@@ -32,6 +32,7 @@
   margin-bottom: 20px; 
 }
 
+
 .card img {
   width: 50px;
   height: 50px;
