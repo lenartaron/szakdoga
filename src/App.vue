@@ -4,14 +4,16 @@
 </script>
 <template>
     <header>
-        <div class="row">
+      <div class="df">
+        <div>
           <img src="./assets/logo.png" class="col-lg-1 col-md-6 col-sm-12">
           <h1>GatherinGalaxy</h1>
-          <div class="row justify-content-center">
-            <button class="col-lg-1">Bejelentkezés</button>
-            <button class="col-lg-1">Regisztráció</button>
-          </div>
         </div>
+        <div class="row">
+          <button class="col-lg-5,5">Bejelentkezés</button>
+          <button class="col-lg-5,5">Regisztráció</button>
+        </div>
+      </div>
       <section>
         <nav>
           <ul class="menuItems">
@@ -31,6 +33,15 @@
     </footer>
 </template>
 <style scoped>
+.df {
+  display: flex;
+}
+
+div>button {
+  margin-right: 0px;
+  justify-content: flex-end;
+}
+
 .menuItems {
   list-style: none;
   display: flex;
