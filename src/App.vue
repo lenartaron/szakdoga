@@ -1,9 +1,19 @@
 <script setup>
 
+
 </script>
 <template>
     <header>
-      <h1>teszt</h1>
+      <div class="df">
+        <div>
+          <img src="./assets/logo.png" class="col-lg-1 col-md-6 col-sm-12">
+          <h1>GatherinGalaxy</h1>
+        </div>
+        <div class="row">
+          <button class="col-lg-5,5">Bejelentkezés</button>
+          <button class="col-lg-5,5">Regisztráció</button>
+        </div>
+      </div>
       <section>
         <nav>
           <ul class="menuItems">
@@ -18,11 +28,20 @@
     <main class="contant">
       <router-view />
     </main>
-    <footer>
+    <footer class="text-center">
       <p>Copyright &copy;</p>
     </footer>
 </template>
 <style scoped>
+.df {
+  display: flex;
+}
+
+div>button {
+  margin-right: 0px;
+  justify-content: flex-end;
+}
+
 .menuItems {
   list-style: none;
   display: flex;
@@ -73,5 +92,9 @@
   .card {
     width: 100%;
   }
+  .menuItems {
+    display: none;
+  }
 }
+
 </style>
