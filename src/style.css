@@ -59,7 +59,7 @@ header>a {
   font-size: xx-large;
   box-decoration: none;
   color: aliceblue;
-  cursor: url("assets/cursortest.cur"), pointer;
+
 }
 
 /*Footer*/
@@ -141,4 +141,8 @@ footer {
 
 #reszletek {
   cursor: url("assets/pointercursor.cur"), auto;
+}
+
+.cursorSettings {
+  cursor: url("assets/cursortest.cur"), pointer;
 }

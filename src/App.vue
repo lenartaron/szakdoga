@@ -6,21 +6,21 @@
     <header>
       <div class="df">
         <div>
-          <img src="./assets/logo.png" class="col-lg-1 col-md-6 col-sm-12">
+          <img src="./assets/logo.png" class="col-lg-1 col-md-2 col-sm-3">
           <h1>GatherinGalaxy</h1>
         </div>
         <div class="row">
-          <button class="col-lg-5,5">Bejelentkezés</button>
-          <button class="col-lg-5,5">Regisztráció</button>
+          <button class="col-lg-5,5 cursorSettings">Bejelentkezés</button>
+          <button class="col-lg-5,5 cursorSettings">Regisztráció</button>
         </div>
       </div>
       <section>
         <nav>
           <ul class="menuItems">
-            <li><a href="#" data-item='Home'>Home</a></li>
-            <li><a href="#" data-item='About'>About</a></li>
-            <li><a href="#" data-item='Projects'>Projects</a></li>
-            <li><a href="#" data-item='Contact'>Contact</a></li>
+            <li><a href="#" data-item='Home' class="cursorSettings">Home</a></li>
+            <li><a href="#" data-item='About' class="cursorSettings">About</a></li>
+            <li><a href="#" data-item='Projects' class="cursorSettings">Projects</a></li>
+            <li><a href="#" data-item='Contact' class="cursorSettings">Contact</a></li>
           </ul>
         </nav>
       </section>
