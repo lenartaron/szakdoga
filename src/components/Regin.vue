@@ -9,10 +9,12 @@
       <h2 class="text-center">Belépés</h2>
       <form>
         <div class="mb-3">
-          <input type="email" class="form-control bg-dark text-white" id="loginEmail" placeholder="Email cím megadása" />
+          <input type="email" class="form-control bg-dark text-white" id="loginEmail"
+            placeholder="Email cím megadása" />
         </div>
         <div class="mb-3">
-          <input type="password" class="form-control bg-dark text-white" id="loginPassword" placeholder="Jelszó megadása" />
+          <input type="password" class="form-control bg-dark text-white" id="loginPassword"
+            placeholder="Jelszó megadása" />
         </div>
         <div class="form-check mb-3">
           <input class="form-check-input checkbox" type="checkbox" id="notrobot" />
@@ -25,14 +27,17 @@
 </template>
 
 <style scoped>
-form, .container-center{
+form,
+.container-center {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .checkbox {
   padding: 0px;
 }
+
 form {
   gap: 10px;
 }

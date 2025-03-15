@@ -10,14 +10,14 @@
           <h1>GatherinGalaxy</h1>
         </div>
         <div class="row">
-          <button class="col-lg-5,5 cursorSettings">Bejelentkezés</button>
+          <RouterLink to="/regin" class="col-lg-5 cursorSettings btn">Bejelentkezés</RouterLink>
           <button class="col-lg-5,5 cursorSettings">Regisztráció</button>
         </div>
       </div>
       <section>
         <nav>
           <ul class="menuItems">
-            <li><a href="#" data-item='Home' class="cursorSettings">Home</a></li>
+            <li><RouterLink to="/" data-item='Home' class="cursorSettings">Home</RouterLink></li>
             <li><a href="#" data-item='About' class="cursorSettings">About</a></li>
             <li><a href="#" data-item='Projects' class="cursorSettings">Projects</a></li>
             <li><a href="#" data-item='Contact' class="cursorSettings">Contact</a></li>
@@ -33,6 +33,21 @@
     </footer>
 </template>
 <style scoped>
+
+.row {
+  gap: 10px;
+}
+
+a.router-link-active {
+  color: white;
+  text-decoration: none;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+}
+
 .df {
   display: flex;
 }
