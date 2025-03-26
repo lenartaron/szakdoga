@@ -10,8 +10,8 @@
           <h1>GatherinGalaxy</h1>
         </div>
         <div class="row">
-          <router-link to="/regin" class="col-lg-5 cursorSettings btn">Bejelentkezés</router-link>
-          <button class="col-lg-5,5 cursorSettings">Regisztráció</button>
+          <router-link to="/regin" class="col-lg-6 cursorSettings" id="test">Bejelentkezés</router-link>
+          <router-link to="/regin" class="col-lg-6 cursorSettings" id="test">Regisztráció</router-link>
         </div>
       </div>
       <section>
@@ -38,7 +38,7 @@
   gap: 10px;
 }
 
-a.router-link-active {
+#test:active {
   color: white;
   text-decoration: none;
 }
@@ -52,7 +52,7 @@ a.router-link-active {
   display: flex;
 }
 
-div>button {
+div>#test {
   margin-right: 0px;
   justify-content: flex-end;
 }
