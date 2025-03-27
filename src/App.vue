@@ -10,8 +10,8 @@
           <h1>GatherinGalaxy</h1>
         </div>
         <div class="row">
-          <router-link to="/regin" class="col-lg-6 cursorSettings" id="test">Bejelentkezés</router-link>
-          <router-link to="/regin" class="col-lg-6 cursorSettings" id="test">Regisztráció</router-link>
+          <router-link to="/regin?mode=login" class="col-lg-6 cursorSettings" id="test">Bejelentkezés</router-link>
+          <router-link to="/regin?mode=register" class="col-lg-6 cursorSettings" id="test">Regisztráció</router-link>
         </div>
       </div>
       <section>
