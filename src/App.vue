@@ -36,6 +36,7 @@
 
 .row {
   gap: 10px;
+  margin: 0;
 }
 
 #test:active {
@@ -48,8 +49,27 @@
   border: none;
 }
 
-.df {
+header .df {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .df div:first-child {
+  display: flex;
+  align-items: center;
+}
+
+header img {
+  width: 110px;
+  height: auto;
+  margin-right: 10px;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 0;
+  white-space: nowrap;
 }
 
 div>#test {
@@ -107,7 +127,7 @@ div>#test {
   .card {
     width: 100%;
   }
-  .menuItems {
+  .menuItems, div>h1, .row {
     display: none;
   }
 }
