@@ -35,8 +35,15 @@
 <style scoped>
 
 .row {
-  gap: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
   margin: 0;
+}
+
+.row a {
+  flex: 0 1 auto;
 }
 
 #test:active {
