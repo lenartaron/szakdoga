@@ -9,11 +9,21 @@
     "wdth" 100;
 
   cursor: url("assets/simplecursor.cur"), pointer;
-  
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
 }
 
 /*Body*/
 body {
+  height: 100%;
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
@@ -64,11 +74,11 @@ header>a {
 
 /*Footer*/
 footer {
-  bottom: 0;
   width: 100%;
-  box-align: center;
-  align-items: end;
+  text-align: center;
   padding: 10px 0;
+  background-color: #44165A;
+  color: white;
 }
 
 /*Scroll*/
