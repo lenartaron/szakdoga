@@ -34,7 +34,7 @@ const username = ref('');
 
 async function login() {
   try {
-    const response = await axios.post('http://localhost/teszt/login.php', {
+    const response = await axios.post('http://localhost/gatheringgalaxy/login.php', {
       email: email.value,
       password: password.value
     });
@@ -46,7 +46,7 @@ async function login() {
 
 async function register() {
   try {
-    const response = await axios.post('http://localhost/teszt/register.php', {
+    const response = await axios.post('http://localhost/gatheringgalaxy/register.php', {
       username: username.value,
       email: email.value,
       password: password.value
@@ -68,7 +68,6 @@ function switchMode() {
   message.value = ''; // Üzenet törlése
 }
 </script>
-
 <template>
   <div class="container-center">
     <div class="card p-4 shadow-lg">
@@ -87,7 +86,6 @@ function switchMode() {
         </div>
         <button type="submit" class="btn btn-primary w-100">{{ mode === 'login' ? 'Belépés' : 'Regisztráció' }}</button>
       </form>
-
       <div class="text-center mt-3">
         <p>{{ message }}</p>
         <button class="btn btn-link" @click="switchMode">
@@ -98,7 +96,6 @@ function switchMode() {
     </div>
   </div>
 </template>
-
 <style scoped>
 form,
 .container-center {
@@ -124,7 +121,7 @@ form {
 
 .container-center {
   justify-content: center;
-  height: 100vh;
+  height: 80vh;
   background-size: cover;
   background-position: center;
 }
