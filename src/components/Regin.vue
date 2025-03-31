@@ -11,7 +11,7 @@ const buttonText = computed(() => {
   return mode.value === 'login' ? 'Nincs fiókod? Regisztrálj!' : 'Már van fiókod? Jelentkezz be!';
 });
 
-// Ellenőrizzük az URL paramétereit (login vagy register)
+
 onMounted(() => {
   if (route.query.mode === 'register') {
     mode.value = 'register';
@@ -20,7 +20,7 @@ onMounted(() => {
   }
 });
 
-// Figyeljük az URL változásait és frissítjük a nézetet
+
 watch(() => route.query.mode, (newMode) => {
   if (newMode === 'register' || newMode === 'login') {
     mode.value = newMode;
@@ -65,7 +65,7 @@ function switchMode() {
     mode.value = 'login';
     router.push({ query: { mode: 'login' } });
   }
-  message.value = ''; // Üzenet törlése
+  message.value = '';
 }
 </script>
 <template>
