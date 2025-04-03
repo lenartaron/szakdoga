@@ -12,7 +12,7 @@
               <h3>Card Title {{ adatbazisamibőlmajdkiolvassaazadatot }}</h3>
               <p>A tavasz első napjai mindig új reményt hoznak. A virágok kibújnak a földből, a nap fénye melegebbé válik, és minden egyes pillanatban érezhetjük, hogy az élet újra kezdődik.</p>
             </div>
-            <button @click="EventDetail(index)" id="reszletek" class="cursorSettings"><span>Részletek</span></button>
+            <router-link to="/details" id="reszletek" class="cursorSettings"><span>Részletek</span></router-link>
           </div>
         </div>
       </div>

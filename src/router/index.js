@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Regin from "../components/Regin.vue"
 import EventCard from "../components/EventCard.vue";
+import Details from "../components/Details.vue";
 
 const routes = [
     {
@@ -11,6 +12,10 @@ const routes = [
         path: "/regin", 
         component: Regin,
     },
+    {
+        path: "/details",
+        component: Details,
+    }
 ];
 
 const router = createRouter({
