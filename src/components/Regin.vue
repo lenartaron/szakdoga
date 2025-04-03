@@ -1,17 +1,20 @@
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { ref, computed, onMounted, watch } from 'vue'; 
+import { useRoute, useRouter } from 'vue-router'; 
 import axios from 'axios';
 
+// Reaktív változó a mód (login vagy register) nyomon követésére (Alap értelmezés: login)
 const mode = ref('login');
-const route = useRoute();
-const router = useRouter();
 
+const route = useRoute(); 
+const router = useRouter(); 
+
+// Számított érték a gomb szövegének dinamikus megváltoztatásához a mód alapján
 const buttonText = computed(() => {
   return mode.value === 'login' ? 'Nincs fiókod? Regisztrálj!' : 'Már van fiókod? Jelentkezz be!';
 });
 
-
+//Ez ellenőrzi az URL-ben lévő 'mode' query paramétert, és beállítja a módot
 onMounted(() => {
   if (route.query.mode === 'register') {
     mode.value = 'register';
@@ -20,30 +23,34 @@ onMounted(() => {
   }
 });
 
-
+// Watcher, amely figyeli az URL 'mode' query paraméterének változását
 watch(() => route.query.mode, (newMode) => {
   if (newMode === 'register' || newMode === 'login') {
     mode.value = newMode;
   }
 });
 
+// Reaktív változók az űrlap mezőkhöz és üzenetekhez
 const message = ref('');
-const email = ref('');
-const password = ref('');
-const username = ref('');
+const email = ref(''); 
+const password = ref(''); 
+const username = ref(''); 
 
+// Bejelentkezési funkció
 async function login() {
   try {
     const response = await axios.post('http://localhost/gatheringgalaxy/login.php', {
       email: email.value,
       password: password.value
     });
+    // A válasz üzenetének megjelenítése
     message.value = response.data.message;
   } catch (error) {
     message.value = 'Hiba történt a bejelentkezés során.';
   }
 }
 
+// Regisztrációs funkció
 async function register() {
   try {
     const response = await axios.post('http://localhost/gatheringgalaxy/register.php', {
@@ -51,12 +58,14 @@ async function register() {
       email: email.value,
       password: password.value
     });
+    // A válasz üzenetének megjelenítése
     message.value = response.data.message;
   } catch (error) {
     message.value = 'Hiba történt a regisztráció során.';
   }
 }
 
+// Funkció a mód váltására (login és register között)
 function switchMode() {
   if (mode.value === 'login') {
     mode.value = 'register';
@@ -65,6 +74,7 @@ function switchMode() {
     mode.value = 'login';
     router.push({ query: { mode: 'login' } });
   }
+  // Az üzenet törlése módváltáskor
   message.value = '';
 }
 </script>
