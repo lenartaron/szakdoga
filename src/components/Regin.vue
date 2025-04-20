@@ -1,20 +1,27 @@
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue'; 
-import { useRoute, useRouter } from 'vue-router'; 
+import { ref, computed, onMounted, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios';
 
-// Reaktív változó a mód (login vagy register) nyomon követésére (Alap értelmezés: login)
 const mode = ref('login');
 
-const route = useRoute(); 
-const router = useRouter(); 
+const route = useRoute();
+const router = useRouter();
 
-// Számított érték a gomb szövegének dinamikus megváltoztatásához a mód alapján
 const buttonText = computed(() => {
   return mode.value === 'login' ? 'Nincs fiókod? Regisztrálj!' : 'Már van fiókod? Jelentkezz be!';
 });
 
-//Ez ellenőrzi az URL-ben lévő 'mode' query paramétert, és beállítja a módot
+const emailInputType = computed(() => {
+  return mode.value === 'login' ? 'text' : 'email';
+});
+
+const emailPlaceholder = computed(() => {
+  return mode.value === 'login'
+    ? 'Email cím vagy felhasználónév'
+    : 'Email cím megadása';
+});
+
 onMounted(() => {
   if (route.query.mode === 'register') {
     mode.value = 'register';
@@ -23,49 +30,63 @@ onMounted(() => {
   }
 });
 
-// Watcher, amely figyeli az URL 'mode' query paraméterének változását
 watch(() => route.query.mode, (newMode) => {
   if (newMode === 'register' || newMode === 'login') {
     mode.value = newMode;
   }
 });
 
-// Reaktív változók az űrlap mezőkhöz és üzenetekhez
 const message = ref('');
-const email = ref(''); 
-const password = ref(''); 
-const username = ref(''); 
+const email = ref('');
+const password = ref('');
+const username = ref('');
 
-// Bejelentkezési funkció
 async function login() {
   try {
-    const response = await axios.post('http://localhost/gatheringgalaxy/login.php', {
-      email: email.value,
+    const response = await axios.post('https://www.gatheringgalaxy.hu/auth/login.php', {
+      identifier: email.value,
       password: password.value
     });
-    // A válasz üzenetének megjelenítése
-    message.value = response.data.message;
+
+    console.log(response.data);
+
+    if (response.data.success) {
+      alert(`Sikeres bejelentkezés, ${response.data.username}!`);
+      message.value = '';
+      router.push('/');
+    } else {
+      message.value = response.data.message || 'Ismeretlen hiba történt!';
+    }
+
   } catch (error) {
-    message.value = 'Hiba történt a bejelentkezés során.';
+    console.error(error);
+    message.value = error.response?.data?.message || 'Ismeretlen hiba történt!';
   }
 }
 
-// Regisztrációs funkció
 async function register() {
   try {
-    const response = await axios.post('http://localhost/gatheringgalaxy/register.php', {
+    const response = await axios.post('https://www.gatheringgalaxy.hu/auth/register.php', {
       username: username.value,
       email: email.value,
-      password: password.value
+      password: password.value,
     });
-    // A válasz üzenetének megjelenítése
-    message.value = response.data.message;
+
+    console.log(response.data);
+
+    if (response.data.success) {
+      alert(`Sikeres regisztráció, ${username.value}!`);
+      message.value = '';
+      router.push('/');
+    } else {
+      message.value = response.data.message || 'Ismeretlen hiba történt!';
+    }
   } catch (error) {
-    message.value = 'Hiba történt a regisztráció során.';
+    console.error(error);
+    message.value = error.response?.data?.message || 'Ismeretlen hiba történt!';
   }
 }
 
-// Funkció a mód váltására (login és register között)
 function switchMode() {
   if (mode.value === 'login') {
     mode.value = 'register';
@@ -74,10 +95,10 @@ function switchMode() {
     mode.value = 'login';
     router.push({ query: { mode: 'login' } });
   }
-  // Az üzenet törlése módváltáskor
   message.value = '';
 }
 </script>
+
 <template>
   <div class="container-center">
     <div class="card p-4 shadow-lg">
@@ -87,12 +108,10 @@ function switchMode() {
           <input v-model="username" type="text" class="form-control bg-dark text-white" placeholder="Felhasználónév" />
         </div>
         <div class="mb-3">
-          <input v-model="email" type="email" class="form-control bg-dark text-white"
-            placeholder="Email cím megadása" />
+          <input v-model="email" :type="emailInputType" class="form-control bg-dark text-white" :placeholder="emailPlaceholder" />
         </div>
         <div class="mb-3">
-          <input v-model="password" type="password" class="form-control bg-dark text-white"
-            placeholder="Jelszó megadása" />
+          <input v-model="password" type="password" class="form-control bg-dark text-white" placeholder="Jelszó megadása" />
         </div>
         <button type="submit" class="btn btn-primary w-100">{{ mode === 'login' ? 'Belépés' : 'Regisztráció' }}</button>
       </form>
@@ -101,11 +120,11 @@ function switchMode() {
         <button class="btn btn-link" @click="switchMode">
           {{ buttonText }}
         </button>
-
       </div>
     </div>
   </div>
 </template>
+
 <style scoped>
 form,
 .container-center {
