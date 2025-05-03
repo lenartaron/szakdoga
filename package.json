@@ -12,6 +12,7 @@
     "axios": "^1.8.4",
     "bootstrap": "^5.3.3",
     "build": "^0.1.4",
+    "date-fns": "^4.1.0",
     "pinia": "^2.3.1",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
@@ -20,6 +21,7 @@
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/test-utils": "^2.4.6",
     "jsdom": "^26.0.0",
+    "path": "^0.12.7",
     "vite": "^6.0.5",
     "vitest": "^3.0.8"
   }

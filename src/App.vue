@@ -1,37 +1,108 @@
 <script setup>
+import CreateEvent from './components/CreateEvent.vue';
+import EventCard from './components/EventCard.vue';
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from './state/authStore.js';
+import { useEventsStore } from './state/state.js';
 
+
+const events = ref([]);
+const isLoggedIn = ref(false);
+const router = useRouter();
+const authStore = useAuthStore();
+const eventsStore = useEventsStore();
+
+
+const checkSession = async () => {
+  try {
+    const response = await fetch('/api/check_session.php', { credentials: 'include' });
+    const data = await response.json();
+    isLoggedIn.value = data.isLoggedIn;
+  } catch (error) {
+    console.error('Hiba a session ellenőrzésekor:', error);
+  }
+};
+
+// Események betöltése
+const loadEvents = async () => {
+  try {
+    const response = await fetch('/api/get_events.php');
+    const data = await response.json();
+    events.value = data.slne_events;
+  } catch (error) {
+    console.error('Hiba:', error);
+  }
+};
+
+const logout = async () => {
+  try {
+    await fetch('/auth/logout.php', { credentials: 'include' });
+    isLoggedIn.value = false;
+    router.push('/');
+  } catch (error) {
+    console.error('Hiba a kijelentkezéskor:', error);
+  }
+};
+
+authStore.checkAuthStatus();
+
+onMounted(() => {
+  checkSession();
+  loadEvents();
+});
+
+router.afterEach(() => {
+  checkSession();
+});
 </script>
 <template>
-    <header>
-      <div class="df">
-        <div>
-          <img src="./assets/logo.png" class="col-lg-1 col-md-2 col-sm-3">
-          <h1>GatherinGalaxy</h1>
-        </div>
-        <div class="row">
-          <router-link to="/regin?mode=login" class="col-lg-6 cursorSettings" id="test">Bejelentkezés</router-link>
-          <router-link to="/regin?mode=register" class="col-lg-6 cursorSettings" id="test">Regisztráció</router-link>
+  <header>
+    <div class="df">
+      <div>
+        <img src="./assets/logo.png" class="col-lg-1 col-md-2 col-sm-3">
+        <h1>GatherinGalaxy</h1>
+      </div>
+      <div class="row" v-if="!isLoggedIn">
+        <router-link to="/regin?mode=login" class="col-lg-6 cursorSettings" id="test">Bejelentkezés</router-link>
+        <router-link to="/regin?mode=register" class="col-lg-6 cursorSettings" id="test">Regisztráció</router-link>
+      </div>
+      <div class="row" v-else>
+        <button @click="logout" class="col-lg-6 cursorSettings" id="test">Kijelentkezés</button>
+      </div>
+    </div>
+    <section>
+      <nav>
+        <ul class="menuItems">
+          <li><router-link to="/" data-item='Home' class="cursorSettings">Home</router-link></li>
+          <li><a href="#" data-item='About' class="cursorSettings">About</a></li>
+          <li><a href="#" data-item='Projects' class="cursorSettings">Projects</a></li>
+          <li><a href="#" data-item='Contact' class="cursorSettings">Contact</a></li>
+        </ul>
+      </nav>
+    </section>
+  </header>
+  <main class="contant">
+    <router-view @refresh-events="loadEvents" />
+
+    <div class="container">
+      <div class="row justify-center">
+        <div class="col-lg-4 col-md-6 col-sm-12" v-for="(event, index) in events" :key="index">
+          <EventCard :event="event" />
         </div>
       </div>
-      <section>
-        <nav>
-          <ul class="menuItems">
-            <li><router-link to="/" data-item='Home' class="cursorSettings">Home</router-link></li>
-            <li><a href="#" data-item='About' class="cursorSettings">About</a></li>
-            <li><a href="#" data-item='Projects' class="cursorSettings">Projects</a></li>
-            <li><a href="#" data-item='Contact' class="cursorSettings">Contact</a></li>
-          </ul>
-        </nav>
-      </section>
-    </header>
-    <main class="contant">
-      <router-view />
-    </main>
-    <footer class="text-center">
-      <p>Copyright &copy;</p>
-    </footer>
+    </div>
+  </main>
+  <CreateEvent v-if="isLoggedIn" class="create-event-wrapper" />
+  <footer class="text-center">
+    <p>Copyright &copy;</p>
+  </footer>
 </template>
 <style scoped>
+.create-event-wrapper {
+  position: relative;
+  z-index: 1000;
+}
 
 .row {
   display: flex;
@@ -134,9 +205,11 @@ div>#test {
   .card {
     width: 100%;
   }
-  .menuItems, div>h1, .row {
+
+  .menuItems,
+  div>h1,
+  .row {
     display: none;
   }
 }
-
 </style>

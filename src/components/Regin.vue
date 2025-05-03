@@ -2,11 +2,14 @@
 import { ref, computed, onMounted, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios';
+import { useAuthStore } from '../state/authStore.js';
 
 const mode = ref('login');
-
 const route = useRoute();
 const router = useRouter();
+const props = defineProps(['isLoggedIn']);
+const emit = defineEmits(['update-login-status']);
+const authStore = useAuthStore();
 
 const buttonText = computed(() => {
   return mode.value === 'login' ? 'Nincs fiókod? Regisztrálj!' : 'Már van fiókod? Jelentkezz be!';
@@ -43,46 +46,34 @@ const username = ref('');
 
 async function login() {
   try {
-    const response = await axios.post('https://www.gatheringgalaxy.hu/auth/login.php', {
-      identifier: email.value,
-      password: password.value
-    });
-
-    console.log(response.data);
-
-    if (response.data.success) {
-      alert(`Sikeres bejelentkezés, ${response.data.username}!`);
-      message.value = '';
+    const response = await authStore.login(email.value, password.value);
+    
+    if (response.success) {
+      alert(`Sikeres bejelentkezés, ${authStore.username}!`);
       router.push('/');
     } else {
-      message.value = response.data.message || 'Ismeretlen hiba történt!';
+      message.value = response.message || 'Ismeretlen hiba történt!';
     }
-
   } catch (error) {
-    console.error(error);
-    message.value = error.response?.data?.message || 'Ismeretlen hiba történt!';
+    message.value = error.response?.data?.message || 'Szerverhiba!';
   }
 }
 
 async function register() {
   try {
-    const response = await axios.post('https://www.gatheringgalaxy.hu/auth/register.php', {
+    const response = await axios.post('/auth/register.php', {
       username: username.value,
       email: email.value,
       password: password.value,
     });
-
-    console.log(response.data);
-
     if (response.data.success) {
+      authStore.login(response.data.email);
       alert(`Sikeres regisztráció, ${username.value}!`);
-      message.value = '';
       router.push('/');
     } else {
       message.value = response.data.message || 'Ismeretlen hiba történt!';
     }
   } catch (error) {
-    console.error(error);
     message.value = error.response?.data?.message || 'Ismeretlen hiba történt!';
   }
 }
@@ -111,7 +102,12 @@ function switchMode() {
           <input v-model="email" :type="emailInputType" class="form-control bg-dark text-white" :placeholder="emailPlaceholder" />
         </div>
         <div class="mb-3">
-          <input v-model="password" type="password" class="form-control bg-dark text-white" placeholder="Jelszó megadása" />
+          <input v-model="password" type="password" class="form-control bg-dark text-white"
+            placeholder="Jelszó megadása" />
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" v-model="rememberMe" class="form-check-input" id="rememberMe">
+          <label class="form-check-label" for="rememberMe">Maradjak bejelentkezve</label>
         </div>
         <button type="submit" class="btn btn-primary w-100">{{ mode === 'login' ? 'Belépés' : 'Regisztráció' }}</button>
       </form>
