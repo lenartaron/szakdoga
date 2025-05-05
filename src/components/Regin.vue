@@ -96,24 +96,24 @@ function switchMode() {
       <h2 class="text-center">{{ mode === 'login' ? 'Belépés' : 'Regisztráció' }}</h2>
       <form @submit.prevent="mode === 'login' ? login() : register()">
         <div v-if="mode === 'register'" class="mb-3">
-          <input v-model="username" type="text" class="form-control bg-dark text-white" placeholder="Felhasználónév" />
+          <input v-model="username" type="text" class="form-control bg-dark text-white HoverAnimation" placeholder="Felhasználónév" />
         </div>
         <div class="mb-3">
-          <input v-model="email" :type="emailInputType" class="form-control bg-dark text-white" :placeholder="emailPlaceholder" />
+          <input v-model="email" :type="emailInputType" class="form-control bg-dark text-white HoverAnimation" :placeholder="emailPlaceholder" />
         </div>
         <div class="mb-3">
-          <input v-model="password" type="password" class="form-control bg-dark text-white"
+          <input v-model="password" type="password" class="form-control bg-dark text-white HoverAnimation"
             placeholder="Jelszó megadása" />
         </div>
         <div class="mb-3 form-check">
           <input type="checkbox" v-model="rememberMe" class="form-check-input" id="rememberMe">
-          <label class="form-check-label" for="rememberMe">Maradjak bejelentkezve</label>
+          <label class="form-check-label color" for="rememberMe">Maradjak bejelentkezve</label>
         </div>
-        <button type="submit" class="btn btn-primary w-100">{{ mode === 'login' ? 'Belépés' : 'Regisztráció' }}</button>
+        <button type="submit" class="btn btn-primary w-100 HoverAnimation">{{ mode === 'login' ? 'Belépés' : 'Regisztráció' }}</button>
       </form>
       <div class="text-center mt-3">
         <p>{{ message }}</p>
-        <button class="btn btn-link" @click="switchMode">
+        <button class="btn btn-link color" @click="switchMode">
           {{ buttonText }}
         </button>
       </div>
@@ -149,5 +149,22 @@ form {
   height: 80vh;
   background-size: cover;
   background-position: center;
+}
+
+.HoverAnimation {
+  transition: all 1s;
+  
+}
+
+.HoverAnimation:hover {
+  transform: scale(1.08);
+}
+
+.HoverAnimation:focus {
+  transform: scale(1.08);
+}
+
+.color {
+  color: #d6beb0;
 }
 </style>
