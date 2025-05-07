@@ -18,7 +18,10 @@ const props = defineProps({
 });
 
 const formattedDate = computed(() => {
-  return format(new Date(props.event.date), "yyyy. MMMM dd. HH:mm", { locale: hu });
+    if (!props.event.date || isNaN(new Date(props.event.date).getTime())) {
+        return "Érvénytelen dátum";
+    }
+    return format(new Date(props.event.date), "yyyy. MMMM dd. HH:mm", { locale: hu });
 });
 </script>
 
