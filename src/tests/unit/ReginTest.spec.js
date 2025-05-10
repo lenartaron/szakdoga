@@ -25,7 +25,7 @@ describe("Regin.vue component", () => {
 
     // Render Tesztek
     describe("Rendering", () => {
-        test("Renders correct header based on mode", async () => {
+        test("A megfelelő fejlécet jeleníti meg az üzemmód alapján", async () => {
             router.push({ query: { mode: "login" } });
             await wrapper.vm.$nextTick();
             expect(wrapper.find("h2").text()).toBe("Belépés");
@@ -36,7 +36,7 @@ describe("Regin.vue component", () => {
             expect(wrapper.vm.mode).toBe("register");
         });
 
-        test("Username input is only visible in register mode", async () => {
+        test("A felhasználónév mező csak regisztrációs módban látható", async () => {
             router.push({ query: { mode: "login" } });
             await router.isReady();
             await wrapper.vm.$nextTick();
@@ -51,7 +51,7 @@ describe("Regin.vue component", () => {
 
     // Interakciós Tesztek
     describe("User Interactions", () => {
-        test("Triggers login or register method on form submit", async () => {
+        test("Űrlap beküldésekor elindítja a bejelentkezési vagy regisztrációs metódust", async () => {
             const loginSpy = vi.spyOn(wrapper.vm, "login");
             const registerSpy = vi.spyOn(wrapper.vm, "register");
 
@@ -67,7 +67,7 @@ describe("Regin.vue component", () => {
             expect(wrapper.vm.mode).toBe("register");
         });
 
-        test("Mode switches correctly when clicking switchMode button", async () => {
+        test("Az üzemmód helyesen vált, amikor a switchMode gombra kattintasz", async () => {
             const switchButton = wrapper.find("button.btn-link");
 
             await switchButton.trigger("click");
@@ -82,7 +82,7 @@ describe("Regin.vue component", () => {
 
     // Router és State tesztek
     describe("State and Router Behavior", () => {
-        test("Properly updates mode based on query params", async () => {
+        test("Az üzemmód megfelelően frissül a lekérdezési paraméterek alapján", async () => {
             router.push({ query: { mode: "register" } });
             await router.isReady();
             await wrapper.vm.$nextTick();

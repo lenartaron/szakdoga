@@ -22,7 +22,6 @@ describe("EventCard.vue", () => {
         expect(wrapper.find("img").attributes("src")).toBe(event.organizer);
         expect(wrapper.find(".event-meta").text()).toContain("2025. május 10.");
         expect(wrapper.find(".event-meta").text()).toContain("Budapest");
-        console.log("Kapott szöveg:", wrapper.find("p").text());
         expect(wrapper.find(".content > p").text()).toContain("Egy nagyszerű esemény!");
 
     });
